@@ -40,6 +40,7 @@ set softtabstop=2
 set ai              " Auto indent
 set si              " Smart indent
 set showmatch       " show matching braces
+set ruler
 filetype indent on  " enable filetype specific indentation
 
 " Enable syntax highlighting
