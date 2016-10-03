@@ -7,7 +7,7 @@ Plug 'junegunn/limelight.vim'
 Plug 'junegunn/seoul256.vim'
 
 " Group dependencies, vim-snippets depends on ultisnips
-Plug 'SirVer/ultisnips' | Plug 'honza/vim-snippets'
+" Plug 'SirVer/ultisnips' | Plug 'honza/vim-snippets'
 
 " On-demand loading
 Plug 'scrooloose/nerdtree', { 'on':  'NERDTreeToggle' }
@@ -20,6 +20,8 @@ Plug 'tpope/vim-rails'
 Plug 'tpope/vim-fugitive'
 Plug 'tpope/vim-bundler'
 Plug 'thoughtbot/vim-rspec'
+Plug 'isRuslan/vim-es6'
+Plug 'junegunn/seoul256.vim'
 
 " Add plugins to &runtimepath
 call plug#end()
@@ -45,6 +47,12 @@ filetype indent on  " enable filetype specific indentation
 
 " Enable syntax highlighting
 syntax on
+syntax enable
+
+" Color scheme
+set background=dark
+colo seoul256
+let g:seoul256_background = 236
 
 " Keep the cursor on the same column
 set nostartofline
@@ -121,4 +129,11 @@ autocmd! User GoyoLeave Limelight!
 nnoremap \ :NERDTreeToggle<cr>
 
 " RSpec.vim mappings
-map <Leader>t :call RunCurrentSpecFile()<CR>
+map <Leader>t :call RunCurrentSpecFile()<cr>
+
+" Move lines
+nnoremap <S-k> :m-2<cr>
+nnoremap <S-j> :m+<cr>
+
+" Trim white spaces at the end of lines
+autocmd BufWritePre * %s/\s\+$//e
