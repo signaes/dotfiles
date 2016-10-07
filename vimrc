@@ -138,3 +138,6 @@ nnoremap <S-j> :m+<cr>
 
 " Trim white spaces at the end of lines
 autocmd BufWritePre * %s/\s\+$//e
+
+" FZF
+nnoremap <Leader>f :FZF<cr>
