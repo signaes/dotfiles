@@ -72,25 +72,6 @@ nnoremap <C-H> <C-W><C-H>
 set number
 set relativenumber
 
-" Toogle numbers
-nnoremap <C-n> :set invnumber<cr>
-nnoremap <C-r> :set invrelativenumber<cr>
-
-function! NoNumbers()
-  set nonumber
-  set norelativenumber
-endfunc
-
-function! ToggleNumbers()
-  set invnumber
-  set invrelativenumber
-endfunc
-
-nnoremap <S-n> :call NoNumbers()<cr>
-nnoremap <S-Left> :call ToggleNumbers()<cr>
-nnoremap <S-Right> :call ToggleNumbers()<cr>
-"
-
 " Tabs
 nnoremap <C-t> :tabnew<cr>
 nnoremap <Tab>   :tabnext<cr>
@@ -98,9 +79,8 @@ nnoremap <S-Tab> :tabprevious<cr>
 
 " Write
 nnoremap <Leader>w :w<cr>
-
-" Save
-nnoremap <C-u> :update<cr>
+nnoremap <C-w> <Esc>:w<cr>
+inoremap <C-w> <Esc>:w<cr>g
 
 " Automatically update a file if it is changed externally
 set autoread
@@ -141,3 +121,16 @@ autocmd BufWritePre * %s/\s\+$//e
 
 " FZF
 nnoremap <Leader>f :FZF<cr>
+
+" Esc
+inoremap <c-e> <Esc>l
+
+" Mouse support
+set mouse=a
+
+" Show command
+set showcmd
+
+" Backup and swp
+set backupdir=~/.vim/backup
+set directory=~/.vim/swap
