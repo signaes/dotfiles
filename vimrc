@@ -22,6 +22,7 @@ Plug 'tpope/vim-bundler'
 Plug 'thoughtbot/vim-rspec'
 Plug 'isRuslan/vim-es6'
 Plug 'junegunn/seoul256.vim'
+Plug 'lambdatoast/elm.vim'
 Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }
 
 " Add plugins to &runtimepath
