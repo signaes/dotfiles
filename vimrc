@@ -1,9 +1,7 @@
 call plug#begin('~/.vim/plugged')
 
 Plug 'junegunn/goyo.vim'
-
 Plug 'junegunn/limelight.vim'
-
 Plug 'junegunn/seoul256.vim'
 
 " Group dependencies, vim-snippets depends on ultisnips
@@ -15,6 +13,7 @@ Plug 'scrooloose/nerdtree', { 'on':  'NERDTreeToggle' }
 Plug 'tpope/vim-endwise'
 Plug 'tpope/vim-surround'
 Plug 'tpope/vim-commentary'
+Plug 'tpope/vim-sleuth'
 Plug 'vim-ruby/vim-ruby'
 Plug 'tpope/vim-rails'
 Plug 'tpope/vim-fugitive'
@@ -22,7 +21,27 @@ Plug 'tpope/vim-bundler'
 Plug 'thoughtbot/vim-rspec'
 Plug 'isRuslan/vim-es6'
 Plug 'junegunn/seoul256.vim'
+Plug 'mattn/emmet-vim'
 Plug 'lambdatoast/elm.vim'
+Plug 'yuttie/comfortable-motion.vim'
+Plug 'w0rp/ale'
+Plug 'tmhedberg/SimpylFold'
+Plug 'walm/jshint.vim'
+Plug 'Shutnik/jshint2.vim'
+Plug 'clavery/vim-dwre'
+Plug 'digitaltoad/vim-pug'
+Plug 'wavded/vim-stylus'
+Plug 'rhysd/vim-crystal'
+Plug 'kballard/vim-swift'
+Plug 'ngmy/vim-rubocop'
+Plug 'stefanoverna/vim-i18n'
+Plug 'kchmck/vim-coffee-script'
+Plug 'posva/vim-vue'
+Plug 'fatih/vim-go'
+
+" a Vim extension that emulates iA Writer environment when editing Markdown, reStructuredText or text files
+Plug 'amix/vim-zenroom2'
+
 Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }
 
 " Add plugins to &runtimepath
@@ -135,3 +154,41 @@ set showcmd
 " Backup and swp
 set backupdir=~/.vim/backup
 set directory=~/.vim/swap
+
+" Reads local project .vimrc file
+set exrc
+set secure  " disables shell execution and write operations
+
+" Folding
+set foldmethod=indent
+set foldlevel=99
+
+" Enable folding
+nnoremap <leader> za
+
+" SimpylFold
+let g:SimpylFold_docstring_preview = 1
+
+" The Silver Searcher
+" as seen in: https://robots.thoughtbot.com/faster-grepping-in-vim
+if executable('ag')
+  " Use ag over grep
+  set grepprg=ag\ --nogroup\ --nocolor
+
+  " Use ag in CtrlP for listing files. Lightning fast and respects .gitignore
+    let g:ctrlp_user_command = 'ag %s -l -g ""'
+endif
+
+" bind K to grep word under cursor
+nnoremap <leader>s :grep! "\b<C-R><C-W>\b"<CR>:cw<CR>
+
+" bind \ (backward slash) to grep shortcut
+" command -nargs=+ -complete=file -bar Ag silent! grep! <args>|cwindow|redraw!
+nnoremap <leader>\ :Ag<SPACE>
+
+" stylus syntax
+autocmd BufNewFile,BufRead *.styl set filetype=stylus
+
+" vim-i18n
+vmap <Leader>T :call I18nTranslateString()<CR>
+vmap <Leader>DT :call I18nDisplayTranslation()<CR>
