@@ -11,6 +11,7 @@ function gitBranch() {
 export PS1="\[\e[37;2m\]\W \[\e[0m\]\$\[$(tput sgr0)\] \[\e[32;5m\]\`gitBranch\`\[\e[0m\]"
 
 alias pro="cd ~/Projetos"
+alias p="pro"
 alias projetos="pro"
 alias reload="source ~/.bash_profile"
 
