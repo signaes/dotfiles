@@ -98,8 +98,8 @@ nnoremap <S-Tab> :tabprevious<cr>
 
 " Write
 nnoremap <Leader>w :w<cr>
-nnoremap <C-w> <Esc>:w<cr>
-inoremap <C-w> <Esc>:w<cr>g
+nnoremap <C-w> <Esc>:w<Esc><cr>k
+inoremap <C-w> <Esc>:w<Esc><cr>k
 
 " Automatically update a file if it is changed externally
 set autoread
@@ -108,7 +108,7 @@ set autoread
 nnoremap <Leader>h :set hlsearch! hlsearch?<cr>
 
 " Quit
-nnoremap <Leader>q :q<cr>
+nnoremap <Leader>q <Esc>:q<Esc><cr>k
 
 " 고요
 nnoremap <Leader>g :Goyo<cr>
