@@ -15,9 +15,9 @@
   curl -o ~/.git-completion.bash https://raw.githubusercontent.com/git/git/master/contrib/completion/git-completion.bash
 
 echo 'symlinking vimrc, tmux.conf and bash_profile'
-ln -sf "$(pwd)/vimrc" ~/.vimrc
-ln -sf "$(pwd)/tmux.conf" ~/.tmux.conf
-ln -sf "$(pwd)/bash_profile" ~/.bash_profile
+ln -sf "$(pwd)/src/vimrc" ~/.vimrc
+ln -sf "$(pwd)/src/tmux.conf" ~/.tmux.conf
+ln -sf "$(pwd)/src/bash_profile" ~/.bash_profile
 
 [[ $(ls ~/.vim | grep backup 2> /dev/null) == "" ]] && echo 'making ~/.vim/backup and ~/.vim/swap dirs' && \
   mkdir ~/.vim/backup ~/.vim/swap 2> /dev/null
