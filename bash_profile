@@ -14,5 +14,6 @@ alias pro="cd ~/Projetos"
 alias projetos="pro"
 alias reload="source ~/.bash_profile"
 
+source "$(pwd)/git/alias" 2> /dev/null
 source ~/.fzf.bash 2> /dev/null
 source ~/.git-completion.bash 2> /dev/null
