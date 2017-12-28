@@ -12,3 +12,5 @@ export PS1="\[\e[37;2m\]\W \[\e[0m\]\$\[$(tput sgr0)\] \[\e[32;5m\]\`gitBranch\`
 
 alias pro="cd ~/Projetos"
 alias projetos="pro"
+
+source ~/.fzf.bash 2> /dev/null
