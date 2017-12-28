@@ -19,5 +19,5 @@ ln -sf "$(pwd)/vimrc" ~/.vimrc
 ln -sf "$(pwd)/tmux.conf" ~/.tmux.conf
 ln -sf "$(pwd)/bash_profile" ~/.bash_profile
 
-echo 'making ~/.vim/backup and ~/.vim/swap directories'
-mkdir ~/.vim/backup ~/.vim/swap 2> /dev/null
+[[ $(ls ~/.vim | grep backup 2> /dev/null) == "" ]] && echo 'making ~/.vim/backup and ~/.vim/swap dirs' && \
+  mkdir ~/.vim/backup ~/.vim/swap 2> /dev/null
