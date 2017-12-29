@@ -14,6 +14,8 @@
 [[ $(ls ~/.git-completion.bash 2> /dev/null) == "" ]] && echo 'installing git-completion' && \
   curl -o ~/.git-completion.bash https://raw.githubusercontent.com/git/git/master/contrib/completion/git-completion.bash
 
+[[ $(brew ls --versions bash-completion 2> /dev/null) == "" ]] && echo 'installing docker bash-completion' && brew install bash-completion
+
 echo 'symlinking vimrc, tmux.conf and bash_profile'
 ln -sf "$(pwd)/src/vimrc" ~/.vimrc
 ln -sf "$(pwd)/src/tmux.conf" ~/.tmux.conf
