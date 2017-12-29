@@ -1,7 +1,6 @@
 function gitBranch() {
   BRANCH=`git rev-parse --abbrev-ref HEAD 2> /dev/null`
-  if [ ! "${BRANCH}" == "" ]
-  then
+  if [ ! "${BRANCH}" == "" ]; then
     echo "${BRANCH} "
   else
     echo ""
@@ -18,4 +17,6 @@ alias reload="source ~/.bash_profile"
 . "$(pwd)/src/git/alias" 2> /dev/null
 . ~/.fzf.bash 2> /dev/null
 . ~/.git-completion.bash 2> /dev/null
-[ -f /usr/local/etc/bash_completion ] && . /usr/local/etc/bash_completion
+if [ -f $(brew --prefix)/etc/bash_completion ]; then
+  . $(brew --prefix)/etc/bash_completion
+fi
