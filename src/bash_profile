@@ -1,22 +1,2 @@
-function gitBranch() {
-  BRANCH=`git rev-parse --abbrev-ref HEAD 2> /dev/null`
-  if [ ! "${BRANCH}" == "" ]; then
-    echo "${BRANCH} "
-  else
-    echo ""
-  fi
-}
-
-export PS1="\[\e[37;2m\]\W \[\e[0m\]\$\[$(tput sgr0)\] \[\e[32;5m\]\`gitBranch\`\[\e[0m\]"
-
-alias p="cd ~/Projetos"
-alias reload=". ~/.bash_profile"
-alias dotfiles="echo cd $(pwd) && cd $(pwd)"
-alias udemy="p && cd estudos/udemy && open https://udemy.com"
-
-. "$(pwd)/src/git/alias" 2> /dev/null
-. ~/.fzf.bash 2> /dev/null
-. ~/.git-completion.bash 2> /dev/null
-if [ -f $(brew --prefix)/etc/bash_completion ]; then
-  . $(brew --prefix)/etc/bash_completion
-fi
+. "$(pwd)/src/initializers/index" 2> /dev/null
+. "$(pwd)/src/aliases/index" 2> /dev/null

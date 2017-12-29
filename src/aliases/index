@@ -1,0 +1,9 @@
+modules="$(pwd)/src/aliases/modules"
+
+alias p="cd ~/Projetos"
+alias reload=". ~/.bash_profile"
+alias dotfiles="echo cd $(pwd) && cd $(pwd)"
+alias mux="tmuxinator"
+alias udemy="p && cd estudos/udemy && open https://udemy.com"
+
+. "$modules/git"
