@@ -11,6 +11,11 @@
 [[ $(which ag) == "" ]] && echo 'installing ag' && \
   brew install the_silver_searcher
 
+[[ $(which rbenv) == "" ]] && echo 'installing rbenv' && brew install rbenv && rbenv init
+
+[[ $(which tmuxinator) == "" ]] && echo 'installing tmuxinator' && \
+  gem install tmuxinator
+
 [[ $(ls ~/.git-completion.bash 2> /dev/null) == "" ]] && echo 'installing git-completion' && \
   curl -o ~/.git-completion.bash https://raw.githubusercontent.com/git/git/master/contrib/completion/git-completion.bash
 
