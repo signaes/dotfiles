@@ -16,6 +16,11 @@
 
 [[ $(brew ls --versions bash-completion 2> /dev/null) == "" ]] && echo 'installing docker bash-completion' && brew install bash-completion
 
+echo 'symlinking docker bash completions'
+ln -s /Applications/Docker.app/Contents/Resources/etc/docker.bash-completion /usr/local/etc/bash_completion.d/docker
+ln -s /Applications/Docker.app/Contents/Resources/etc/docker-machine.bash-completion /usr/local/etc/bash_completion.d/docker-machine
+ln -s /Applications/Docker.app/Contents/Resources/etc/docker-compose.bash-completion /usr/local/etc/bash_completion.d/docker-compose
+
 echo 'symlinking vimrc, tmux.conf and bash_profile'
 ln -sf "$(pwd)/src/vimrc" ~/.vimrc
 ln -sf "$(pwd)/src/tmux.conf" ~/.tmux.conf
