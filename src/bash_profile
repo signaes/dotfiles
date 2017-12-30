@@ -7,7 +7,7 @@ function gitBranch() {
   fi
 }
 
-export PS1="\[\e[37;2m\]\W \[\e[0m\]\$\[$(tput sgr0)\] \[\e[32;5m\]\`gitBranch\`\[\e[0m\]"
+export PS1="\[\e[37;2m\]\W \[\e[0m\]\[\e[32;5m\]\`gitBranch\`\[\e[0m\]"
 
 . ~/.fzf.bash 2> /dev/null
 
