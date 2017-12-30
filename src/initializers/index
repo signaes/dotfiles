@@ -1,7 +1,0 @@
-modules="$(pwd)/src/initializers/modules"
-
-. "$modules/PS1"
-. "$modules/fzf"
-. "$modules/git"
-. "$modules/bash_completion"
-. "$modules/rbenv"
