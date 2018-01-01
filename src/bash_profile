@@ -19,11 +19,9 @@ fi
 
 eval "$(rbenv init -)"
 
-alias p="cd ~/Projetos"
 alias reload=". ~/.bash_profile"
-alias dotfiles="p && cd dotfiles"
 alias mux="tmuxinator"
-alias udemy="p && cd estudos/udemy && open https://udemy.com"
+alias grep="grep --color=auto"
 
 alias gs="git status"
 alias ga="git add"
@@ -32,3 +30,5 @@ alias gc="git commit"
 alias gd="git diff"
 alias gp="git push"
 alias gca="git commit --amend"
+
+. ~/.bash_profile_custom
