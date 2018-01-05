@@ -37,6 +37,7 @@ Plug 'stefanoverna/vim-i18n'
 Plug 'kchmck/vim-coffee-script'
 Plug 'posva/vim-vue'
 Plug 'fatih/vim-go'
+Plug 'brookhong/ag.vim'
 
 " a Vim extension that emulates iA Writer environment when editing Markdown, reStructuredText or text files
 Plug 'amix/vim-zenroom2'
