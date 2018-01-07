@@ -93,7 +93,7 @@ set number
 set relativenumber
 
 " Tabs
-nnoremap <C-t> :tabnew<cr>
+nnoremap <C-n> :tabnew<cr>
 nnoremap <Tab>   :tabnext<cr>
 nnoremap <S-Tab> :tabprevious<cr>
 
