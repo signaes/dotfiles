@@ -192,3 +192,7 @@ autocmd BufNewFile,BufRead *.styl set filetype=stylus
 " vim-i18n
 vmap <Leader>T :call I18nTranslateString()<CR>
 vmap <Leader>DT :call I18nDisplayTranslation()<CR>
+
+" line length
+set textwidth=80
+set colorcolumn=+1
