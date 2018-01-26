@@ -22,6 +22,7 @@ eval "$(rbenv init -)"
 alias reload=". ~/.bash_profile"
 alias mux="tmuxinator"
 alias grep="grep --color=auto"
+alias ls="ls -G"
 
 alias gs="git status"
 alias ga="git add"
