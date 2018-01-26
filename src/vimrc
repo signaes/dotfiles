@@ -133,7 +133,7 @@ nnoremap \ :NERDTreeToggle<cr>
 map <Leader>t :call RunCurrentSpecFile()<cr>
 
 " Move lines
-nnoremap <S-k> :m-2<cr>
+nnoremap <S-u> :m-2<cr>
 nnoremap <S-j> :m+<cr>
 
 " Trim white spaces at the end of lines
