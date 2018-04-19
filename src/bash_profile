@@ -36,6 +36,7 @@ alias glo="git log --oneline"
 alias gca="git commit --amend"
 alias gcm="git commit -m"
 alias gch="git checkout"
+alias grb="git rebase"
 
 export NVM_DIR="$HOME/.nvm"
 [ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
