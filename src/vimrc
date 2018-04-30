@@ -38,6 +38,7 @@ Plug 'kchmck/vim-coffee-script'
 Plug 'posva/vim-vue'
 Plug 'fatih/vim-go'
 Plug 'brookhong/ag.vim'
+Plug 'luochen1990/rainbow'
 
 " a Vim extension that emulates iA Writer environment when editing Markdown, reStructuredText or text files
 Plug 'amix/vim-zenroom2'
@@ -196,3 +197,9 @@ vmap <Leader>DT :call I18nDisplayTranslation()<CR>
 " line length
 set textwidth=80
 set colorcolumn=+1
+
+" rainbow
+let g:rainbow_active = 1
+
+" rainbow toggle
+nnoremap <C-k> :RainbowToggle<cr>
