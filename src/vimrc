@@ -39,6 +39,8 @@ Plug 'posva/vim-vue'
 Plug 'fatih/vim-go'
 Plug 'brookhong/ag.vim'
 Plug 'luochen1990/rainbow'
+" waka time
+Plug 'wakatime/vim-wakatime'
 
 " a Vim extension that emulates iA Writer environment when editing Markdown, reStructuredText or text files
 Plug 'amix/vim-zenroom2'
