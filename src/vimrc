@@ -39,8 +39,27 @@ Plug 'posva/vim-vue'
 Plug 'fatih/vim-go'
 Plug 'brookhong/ag.vim'
 Plug 'luochen1990/rainbow'
-" waka time
-Plug 'wakatime/vim-wakatime'
+
+" For using deoplete
+if has('nvim')
+  Plug 'Shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins' }
+  Plug 'wokalski/autocomplete-flow'
+  Plug 'Shougo/neosnippet'
+  Plug 'Shougo/neosnippet-snippets'
+else
+  Plug 'Shougo/deoplete.nvim'
+  Plug 'wokalski/autocomplete-flow'
+  Plug 'Shougo/neosnippet'
+  Plug 'Shougo/neosnippet-snippets'
+  Plug 'roxma/nvim-yarp'
+  Plug 'roxma/vim-hug-neovim-rpc'
+endif
+let g:deoplete#enable_at_startup = 1
+
+" neosnippet
+imap <C-k> <Plug>(neosnippet_expand_or_jump)
+smap <C-k> <Plug>(neosnippet_expand_or_jump)
+xmap <C-k> <Plug>(neosnippet_expand_target)
 
 " a Vim extension that emulates iA Writer environment when editing Markdown, reStructuredText or text files
 Plug 'amix/vim-zenroom2'
@@ -204,4 +223,11 @@ set colorcolumn=+1
 let g:rainbow_active = 1
 
 " rainbow toggle
-nnoremap <C-k> :RainbowToggle<cr>
+nnoremap <C-u> :RainbowToggle<cr>
+
+" python
+if has('python3')
+  set pyx=3
+else
+  set pyx=2
+endif
