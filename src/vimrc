@@ -39,6 +39,7 @@ Plug 'posva/vim-vue'
 Plug 'fatih/vim-go'
 Plug 'brookhong/ag.vim'
 Plug 'luochen1990/rainbow'
+Plug 'editorconfig/editorconfig-vim'
 
 " For using deoplete
 if has('nvim')
