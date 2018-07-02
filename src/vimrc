@@ -40,6 +40,8 @@ Plug 'fatih/vim-go'
 Plug 'brookhong/ag.vim'
 Plug 'luochen1990/rainbow'
 Plug 'editorconfig/editorconfig-vim'
+Plug 'dyng/ctrlsf.vim'
+Plug 'terryma/vim-multiple-cursors'
 
 " For using deoplete
 if has('nvim')
@@ -116,7 +118,7 @@ set number
 set relativenumber
 
 " Tabs
-nnoremap <C-n> :tabnew<cr>
+nnoremap <C-t> :tabnew<cr>
 nnoremap <Tab>   :tabnext<cr>
 nnoremap <S-Tab> :tabprevious<cr>
 
@@ -232,3 +234,26 @@ if has('python3')
 else
   set pyx=2
 endif
+
+" Ctrlsf
+nmap     ;f <Plug>CtrlSFPrompt
+vmap     ;f <Plug>CtrlSFVwordPath
+vmap     ;F <Plug>CtrlSFVwordExec
+nmap     ;n <Plug>CtrlSFCwordPath
+nmap     ;p <Plug>CtrlSFPwordPath
+nnoremap ;o :CtrlSFOpen<CR>
+nnoremap ;t :CtrlSFToggle<CR>
+inoremap ;t <Esc>:CtrlSFToggle<CR>
+
+" multiple cursors
+let g:multi_cursor_use_default_mapping=0
+
+" Default mapping
+let g:multi_cursor_start_word_key      = '<C-n>'
+let g:multi_cursor_select_all_word_key = '<A-n>'
+let g:multi_cursor_start_key           = 'g<C-n>'
+let g:multi_cursor_select_all_key      = 'g<A-n>'
+let g:multi_cursor_next_key            = '<C-n>'
+let g:multi_cursor_prev_key            = '<C-p>'
+let g:multi_cursor_skip_key            = '<C-x>'
+let g:multi_cursor_quit_key            = '<Esc>'
