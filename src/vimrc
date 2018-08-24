@@ -22,7 +22,6 @@ Plug 'thoughtbot/vim-rspec'
 Plug 'isRuslan/vim-es6'
 Plug 'mattn/emmet-vim'
 Plug 'lambdatoast/elm.vim'
-Plug 'yuttie/comfortable-motion.vim'
 Plug 'w0rp/ale'
 Plug 'tmhedberg/SimpylFold'
 Plug 'walm/jshint.vim'
@@ -42,6 +41,9 @@ Plug 'luochen1990/rainbow'
 Plug 'editorconfig/editorconfig-vim'
 Plug 'dyng/ctrlsf.vim'
 Plug 'terryma/vim-multiple-cursors'
+Plug 'styled-components/vim-styled-components', { 'branch': 'main' }
+Plug 'leafgarland/typescript-vim'
+Plug 'Quramy/tsuquyomi'
 
 " For using deoplete
 if has('nvim')
