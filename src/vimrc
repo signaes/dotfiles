@@ -44,6 +44,7 @@ Plug 'terryma/vim-multiple-cursors'
 Plug 'styled-components/vim-styled-components', { 'branch': 'main' }
 Plug 'leafgarland/typescript-vim'
 Plug 'Quramy/tsuquyomi'
+Plug 'chrisbra/Colorizer'
 
 " For using deoplete
 if has('nvim')
@@ -99,7 +100,7 @@ syntax enable
 
 " Color scheme
 set background=dark
-colo seoul256
+colors seoul256
 let g:seoul256_background = 236
 
 " Keep the cursor on the same column
@@ -259,3 +260,6 @@ let g:multi_cursor_next_key            = '<C-n>'
 let g:multi_cursor_prev_key            = '<C-p>'
 let g:multi_cursor_skip_key            = '<C-x>'
 let g:multi_cursor_quit_key            = '<Esc>'
+
+" Colorizer
+nnoremap <Leader>c :ColorToggle<cr>
