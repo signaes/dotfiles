@@ -1,5 +1,6 @@
 GREEN='\[\e[0;32m\]'
 RED='\[\e[0;31m\]'
+MAGENTA='\[\e[0;35m\]'
 CLEAR_COLOR='\[\e[0m\]'
 
 function gitBranch() {
@@ -8,6 +9,12 @@ function gitBranch() {
     echo "${BRANCH} "
   else
     echo ""
+  fi
+}
+
+function virtualEnv() {
+  if [ "$VIRTUAL_ENV" != "" ]; then
+    echo "${MAGENTA}(`basename \"$VIRTUAL_ENV\"`)${CLEAR_COLOR} "
   fi
 }
 
@@ -22,7 +29,7 @@ function exitStatus() {
 }
 
 function dynamicPrompt() {
-  PS1="\[\e[37;2m\]\W \[\e[0m\]\[\e[32;5m\]\`gitBranch\`\[\e[0m\]`exitStatus` "
+  PS1="`virtualEnv`\[\e[37;2m\]\W \[\e[0m\]\[\e[32;5m\]\`gitBranch\`\[\e[0m\]`exitStatus` "
 }
 
 PROMPT_COMMAND=dynamicPrompt
