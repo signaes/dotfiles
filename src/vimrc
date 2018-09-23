@@ -45,6 +45,9 @@ Plug 'styled-components/vim-styled-components', { 'branch': 'main' }
 Plug 'leafgarland/typescript-vim'
 Plug 'Quramy/tsuquyomi'
 Plug 'chrisbra/Colorizer'
+Plug 'pangloss/vim-javascript'
+Plug 'jparise/vim-graphql'
+Plug 'flowtype/vim-flow', { 'autoload': { 'filetypes': 'javascript' } }
 
 " For using deoplete
 if has('nvim')
