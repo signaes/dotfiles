@@ -124,7 +124,7 @@ set number
 set relativenumber
 
 " Tabs
-nnoremap <C-t> :tabnew<cr>
+nnoremap <Leader>t :tabnew<cr>
 nnoremap <Tab>   :tabnext<cr>
 nnoremap <S-Tab> :tabprevious<cr>
 
@@ -159,9 +159,6 @@ autocmd! User GoyoLeave Limelight!
 
 " NERDTree
 nnoremap \ :NERDTreeToggle<cr>
-
-" RSpec.vim mappings
-map <Leader>t :call RunCurrentSpecFile()<cr>
 
 " Move lines
 nnoremap <S-u> :m-2<cr>
