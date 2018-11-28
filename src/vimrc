@@ -26,7 +26,6 @@ Plug 'w0rp/ale'
 Plug 'tmhedberg/SimpylFold'
 Plug 'walm/jshint.vim'
 Plug 'Shutnik/jshint2.vim'
-Plug 'clavery/vim-dwre'
 Plug 'digitaltoad/vim-pug'
 Plug 'wavded/vim-stylus'
 Plug 'rhysd/vim-crystal'
@@ -47,6 +46,7 @@ Plug 'Quramy/tsuquyomi'
 Plug 'chrisbra/Colorizer'
 Plug 'pangloss/vim-javascript'
 Plug 'jparise/vim-graphql'
+Plug 'neoclide/coc.nvim', {'tag': '*', 'do': { -> coc#util#install() }}
 Plug 'flowtype/vim-flow', { 'autoload': { 'filetypes': 'javascript' } }
 
 " For using deoplete
