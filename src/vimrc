@@ -38,13 +38,13 @@ Plug 'editorconfig/editorconfig-vim'
 Plug 'dyng/ctrlsf.vim'
 Plug 'terryma/vim-multiple-cursors'
 Plug 'styled-components/vim-styled-components', { 'branch': 'main' }
+Plug 'ianks/vim-tsx'
 Plug 'leafgarland/typescript-vim'
-Plug 'Quramy/tsuquyomi'
 Plug 'chrisbra/Colorizer'
 Plug 'pangloss/vim-javascript'
 Plug 'jparise/vim-graphql'
-Plug 'neoclide/coc.nvim', {'tag': '*', 'do': { -> coc#util#install() }}
-Plug 'flowtype/vim-flow', { 'autoload': { 'filetypes': 'javascript' } }
+" Plug 'neoclide/coc.nvim', {'tag': '*', 'do': { -> coc#util#install() }}
+" Plug 'flowtype/vim-flow', { 'autoload': { 'filetypes': 'javascript' } }
 
 " neosnippet
 imap <C-k> <Plug>(neosnippet_expand_or_jump)
@@ -248,3 +248,9 @@ let g:multi_cursor_quit_key            = '<Esc>'
 
 " Colorizer
 nnoremap <Leader>c :ColorToggle<cr>
+
+" Typescript
+autocmd BufEnter *.tsx set filetype=typescript
+
+" Gohtml
+autocmd BufEnter *.gohtml set filetype=html
