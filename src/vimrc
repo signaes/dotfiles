@@ -42,11 +42,16 @@ Plug 'terryma/vim-multiple-cursors'
 Plug 'styled-components/vim-styled-components', { 'branch': 'main' }
 Plug 'ianks/vim-tsx'
 Plug 'leafgarland/typescript-vim'
+Plug 'HerringtonDarkholme/yats.vim'
+Plug 'mhartington/nvim-typescript', {'do': './install.sh'}
 Plug 'chrisbra/Colorizer'
 Plug 'pangloss/vim-javascript'
 Plug 'jparise/vim-graphql'
 Plug 'rust-lang/rust.vim'
 Plug 'Shougo/deoplete.nvim'
+Plug 'roxma/nvim-yarp'
+Plug 'roxma/vim-hug-neovim-rpc'
+Plug 'Shougo/denite.nvim'
 Plug 'SirVer/ultisnips'
 Plug 'majutsushi/tagbar'
 Plug 'dart-lang/dart-vim-plugin'
@@ -223,13 +228,6 @@ let g:rainbow_active = 1
 " rainbow toggle
 nnoremap <C-u> :RainbowToggle<cr>
 
-" python
-if has('python3')
-  set pyx=3
-else
-  set pyx=2
-endif
-
 " Ctrlsf
 nmap     ;f <Plug>CtrlSFPrompt
 vmap     ;f <Plug>CtrlSFVwordPath
@@ -263,21 +261,27 @@ autocmd BufEnter *.gohtml set filetype=html
 autocmd BufEnter *.ts set filetype=typescript
 autocmd BufEnter *.tsx set filetype=typescript
 
+nnoremap <Leader>d :TSDoc<cr>
+
+let g:deoplete#enable_at_startup = 1
+
 " " TSserver
-" " Author: w0rp <devw0rp@gmail.com>
-" " Description: tsserver integration for ALE
+" Author: w0rp <devw0rp@gmail.com>
+" Description: tsserver integration for ALE
 
-" call ale#Set('typescript_tsserver_executable', 'tsserver')
-" call ale#Set('typescript_tsserver_config_path', '')
-" call ale#Set('typescript_tsserver_use_global', get(g:, 'ale_use_global_executables', 0))
+let g:ale_linters_ignore = {'typescript': ['eslint']}
 
-" call ale#linter#Define('typescript', {
-" \   'name': 'tsserver',
-" \   'lsp': 'tsserver',
-" \   'executable': {b -> ale#node#FindExecutable(b, 'typescript_tsserver', [
-" \       'node_modules/.bin/tsserver',
-" \   ])},
-" \   'command': '%e',
-" \   'project_root': function('ale#handlers#tsserver#GetProjectRoot'),
-" \   'language': '',
-" \})
+call ale#Set('typescript_tsserver_executable', 'tsserver')
+call ale#Set('typescript_tsserver_config_path', '')
+call ale#Set('typescript_tsserver_use_global', get(g:, 'ale_use_global_executables', 0))
+
+call ale#linter#Define('typescript', {
+\   'name': 'tsserver',
+\   'lsp': 'tsserver',
+\   'executable': {b -> ale#node#FindExecutable(b, 'typescript_tsserver', [
+\       'node_modules/.bin/tsserver',
+\   ])},
+\   'command': '%e',
+\   'project_root': function('ale#handlers#tsserver#GetProjectRoot'),
+\   'language': '',
+\})

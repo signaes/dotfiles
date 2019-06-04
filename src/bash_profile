@@ -49,6 +49,8 @@ alias mux="tmuxinator"
 alias grep="grep --color=auto"
 alias ls="ls -G"
 
+alias v="nvim"
+
 alias gs="git status"
 alias ga="git add"
 alias gr="git rm"
