@@ -3,6 +3,7 @@ call plug#begin('~/.vim/plugged')
 Plug 'junegunn/goyo.vim'
 Plug 'junegunn/limelight.vim'
 Plug 'junegunn/seoul256.vim'
+Plug 'junegunn/vim-easy-align'
 
 " On-demand loading
 Plug 'scrooloose/nerdtree', { 'on':  'NERDTreeToggle' }
@@ -41,9 +42,9 @@ Plug 'dyng/ctrlsf.vim'
 Plug 'terryma/vim-multiple-cursors'
 Plug 'styled-components/vim-styled-components', { 'branch': 'main' }
 Plug 'ianks/vim-tsx'
-Plug 'leafgarland/typescript-vim'
+Plug 'leafgarland/typescript-vim', { 'autoload': { 'filetypes': 'typescript' } }
 Plug 'HerringtonDarkholme/yats.vim'
-Plug 'mhartington/nvim-typescript', {'do': './install.sh'}
+Plug 'mhartington/nvim-typescript', { 'do': './install.sh', 'autoload': { 'filetypes': 'typescript' } }
 Plug 'chrisbra/Colorizer'
 Plug 'pangloss/vim-javascript'
 Plug 'jparise/vim-graphql'
@@ -55,6 +56,7 @@ Plug 'Shougo/denite.nvim'
 Plug 'SirVer/ultisnips'
 Plug 'majutsushi/tagbar'
 Plug 'dart-lang/dart-vim-plugin'
+Plug 'zhamlin/tiler.vim'
 " Plug 'neoclide/coc.nvim', {'tag': '*', 'do': { -> coc#util#install() }}
 " Plug 'flowtype/vim-flow', { 'autoload': { 'filetypes': 'javascript' } }
 
@@ -211,6 +213,12 @@ nnoremap <leader>s :grep! "\b<C-R><C-W>\b"<CR>:cw<CR>
 " command -nargs=+ -complete=file -bar Ag silent! grep! <args>|cwindow|redraw!
 nnoremap <leader>\ :Ag<SPACE>
 
+" Easy Align
+" Start interactive EasyAlign in visual mode (e.g. vipga)
+xmap ga <Plug>(EasyAlign)
+" Start interactive EasyAlign for a motion/text object (e.g. gaip)
+nmap ga <Plug>(EasyAlign)
+
 " stylus syntax
 autocmd BufNewFile,BufRead *.styl set filetype=stylus
 
@@ -254,6 +262,23 @@ let g:multi_cursor_quit_key            = '<Esc>'
 " Colorizer
 nnoremap <Leader>c :ColorToggle<cr>
 
+" Tiler
+nnoremap <Leader>. :TilerFocus<CR>
+nnoremap <Leader>x :TilerClose<CR>
+nnoremap <Leader>n :TilerNew<CR>
+nnoremap <Leader>r :TilerReorder<CR>
+nnoremap <Leader>o :TilerOpen
+
+let g:tiler#master#size = 50
+let g:tiler#master#count = 1
+let g:tiler#layout = 'left'
+
+let g:tiler#popup#windows = {
+      \    'quickfix': { 'position': 'bottom', 'size': 10, 'filetype': 'qf', 'order': 3 },
+      \    'nerdtree': { 'position': 'left', 'size': 20, 'filetype': 'nerdtree', 'order': 2 },
+      \    'tagbar': { 'position': 'right', 'size': 10, 'filetype': 'tagbar', 'order': 1 },
+      \ }
+
 " Gohtml
 autocmd BufEnter *.gohtml set filetype=html
 
@@ -261,27 +286,31 @@ autocmd BufEnter *.gohtml set filetype=html
 autocmd BufEnter *.ts set filetype=typescript
 autocmd BufEnter *.tsx set filetype=typescript
 
-nnoremap <Leader>d :TSDoc<cr>
+let ts = ['typescript']
 
-let g:deoplete#enable_at_startup = 1
+if index(ts, &filetype) != -1
+  nnoremap <Leader>d :TSDoc<cr>
 
-" " TSserver
-" Author: w0rp <devw0rp@gmail.com>
-" Description: tsserver integration for ALE
+  let g:deoplete#enable_at_startup = 1
 
-let g:ale_linters_ignore = {'typescript': ['eslint']}
+  " " TSserver
+  " Author: w0rp <devw0rp@gmail.com>
+  " Description: tsserver integration for ALE
 
-call ale#Set('typescript_tsserver_executable', 'tsserver')
-call ale#Set('typescript_tsserver_config_path', '')
-call ale#Set('typescript_tsserver_use_global', get(g:, 'ale_use_global_executables', 0))
+  let g:ale_linters_ignore = {'typescript': ['eslint']}
 
-call ale#linter#Define('typescript', {
-\   'name': 'tsserver',
-\   'lsp': 'tsserver',
-\   'executable': {b -> ale#node#FindExecutable(b, 'typescript_tsserver', [
-\       'node_modules/.bin/tsserver',
-\   ])},
-\   'command': '%e',
-\   'project_root': function('ale#handlers#tsserver#GetProjectRoot'),
-\   'language': '',
-\})
+  call ale#Set('typescript_tsserver_executable', 'tsserver')
+  call ale#Set('typescript_tsserver_config_path', '')
+  call ale#Set('typescript_tsserver_use_global', get(g:, 'ale_use_global_executables', 0))
+
+  call ale#linter#Define('typescript', {
+  \   'name': 'tsserver',
+  \   'lsp': 'tsserver',
+  \   'executable': {b -> ale#node#FindExecutable(b, 'typescript_tsserver', [
+  \       'node_modules/.bin/tsserver',
+  \   ])},
+  \   'command': '%e',
+  \   'project_root': function('ale#handlers#tsserver#GetProjectRoot'),
+  \   'language': '',
+  \})
+endif
