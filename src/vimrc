@@ -57,7 +57,7 @@ Plug 'SirVer/ultisnips'
 Plug 'majutsushi/tagbar'
 Plug 'dart-lang/dart-vim-plugin'
 Plug 'zhamlin/tiler.vim'
-" Plug 'neoclide/coc.nvim', {'tag': '*', 'do': { -> coc#util#install() }}
+Plug 'neoclide/coc.nvim', {'tag': '*', 'do': { -> coc#util#install() }}
 " Plug 'flowtype/vim-flow', { 'autoload': { 'filetypes': 'javascript' } }
 
 " neosnippet
@@ -286,31 +286,28 @@ autocmd BufEnter *.gohtml set filetype=html
 autocmd BufEnter *.ts set filetype=typescript
 autocmd BufEnter *.tsx set filetype=typescript
 
-let ts = ['typescript']
 
-if index(ts, &filetype) != -1
-  nnoremap <Leader>d :TSDoc<cr>
+nnoremap <Leader>d :TSDoc<cr>
 
-  let g:deoplete#enable_at_startup = 1
+let g:deoplete#enable_at_startup = 1
 
-  " " TSserver
-  " Author: w0rp <devw0rp@gmail.com>
-  " Description: tsserver integration for ALE
+" " TSserver
+" Author: w0rp <devw0rp@gmail.com>
+" Description: tsserver integration for ALE
 
-  let g:ale_linters_ignore = {'typescript': ['eslint']}
+let g:ale_linters_ignore = {'typescript': ['eslint']}
 
-  call ale#Set('typescript_tsserver_executable', 'tsserver')
-  call ale#Set('typescript_tsserver_config_path', '')
-  call ale#Set('typescript_tsserver_use_global', get(g:, 'ale_use_global_executables', 0))
+call ale#Set('typescript_tsserver_executable', 'tsserver')
+call ale#Set('typescript_tsserver_config_path', '')
+call ale#Set('typescript_tsserver_use_global', get(g:, 'ale_use_global_executables', 0))
 
-  call ale#linter#Define('typescript', {
-  \   'name': 'tsserver',
-  \   'lsp': 'tsserver',
-  \   'executable': {b -> ale#node#FindExecutable(b, 'typescript_tsserver', [
-  \       'node_modules/.bin/tsserver',
-  \   ])},
-  \   'command': '%e',
-  \   'project_root': function('ale#handlers#tsserver#GetProjectRoot'),
-  \   'language': '',
-  \})
-endif
+call ale#linter#Define('typescript', {
+\   'name': 'tsserver',
+\   'lsp': 'tsserver',
+\   'executable': {b -> ale#node#FindExecutable(b, 'typescript_tsserver', [
+\       'node_modules/.bin/tsserver',
+\   ])},
+\   'command': '%e',
+\   'project_root': function('ale#handlers#tsserver#GetProjectRoot'),
+\   'language': '',
+\})
