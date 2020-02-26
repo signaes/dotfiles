@@ -44,7 +44,7 @@ Plug 'styled-components/vim-styled-components', { 'branch': 'main' }
 Plug 'ianks/vim-tsx'
 Plug 'leafgarland/typescript-vim', { 'autoload': { 'filetypes': 'typescript' } }
 Plug 'HerringtonDarkholme/yats.vim'
-Plug 'mhartington/nvim-typescript', { 'do': './install.sh', 'autoload': { 'filetypes': 'typescript' } }
+Plug 'mhartington/nvim-typescript', { 'do': ':!install.sh \| UpdateRemotePlugin', 'autoload': { 'filetypes': 'typescript' } }
 Plug 'chrisbra/Colorizer'
 Plug 'pangloss/vim-javascript'
 Plug 'jparise/vim-graphql'
@@ -58,7 +58,7 @@ Plug 'majutsushi/tagbar'
 Plug 'dart-lang/dart-vim-plugin'
 Plug 'zhamlin/tiler.vim'
 Plug 'neoclide/coc.nvim', {'tag': '*', 'do': { -> coc#util#install() }}
-Plug 'ruby-formatter/rufo-vim'
+" Plug 'ruby-formatter/rufo-vim'
 " Plug 'flowtype/vim-flow', { 'autoload': { 'filetypes': 'javascript' } }
 
 " neosnippet
