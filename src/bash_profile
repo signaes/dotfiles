@@ -1,7 +1,9 @@
-GREEN='\[\e[0;32m\]'
-RED='\[\e[0;31m\]'
-MAGENTA='\[\e[0;35m\]'
-CLEAR_COLOR='\[\e[0m\]'
+GREEN='\e[0;32m'
+RED='\e[0;31m'
+MAGENTA='\e[35m'
+CLEAR_COLOR='\e[0m'
+GRAY='\e[37;2m'
+LIGHT_GREEN='\e[32m;5m'
 
 function gitBranch() {
   BRANCH=`git rev-parse --abbrev-ref HEAD 2> /dev/null`
@@ -14,22 +16,22 @@ function gitBranch() {
 
 function virtualEnv() {
   if [ "$VIRTUAL_ENV" != "" ]; then
-    echo "${MAGENTA}(`basename \"$VIRTUAL_ENV\"`)${CLEAR_COLOR} "
+    echo -e "${MAGENTA}(`basename \"$VIRTUAL_ENV\"`)${CLEAR_COLOR} "
   fi
 }
 
 function exitStatus() {
-  local EXIT="$?"
-
-  if [ $EXIT != 0 ]; then
-    echo -e "${RED}●${CLEAR_COLOR}"
+  echo ""
+  if [ $1 == 0 ]; then
+    echo -e "${GREEN}●"
   else
-    echo -e "${GREEN}●${CLEAR_COLOR}"
+    echo -e "${RED}●"
   fi
 }
 
 function dynamicPrompt() {
-  PS1="`virtualEnv`\[\e[37;2m\]\W \[\e[0m\]\[\e[32;5m\]\`gitBranch\`\[\e[0m\]`exitStatus` "
+  EXIT=$?
+  PS1="`virtualEnv`${GRAY}\W ${CLEAR_COLOR}${GREEN}`gitBranch`${CLEAR_COLOR}`exitStatus "$EXIT"`${CLEAR_COLOR} "
 }
 
 PROMPT_COMMAND=dynamicPrompt
@@ -69,9 +71,23 @@ export NVM_DIR="$HOME/.nvm"
 [ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
 [ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
 
-. ~/.bash_profile_custom
-
 export PATH="$HOME/.cargo/bin:$PATH"
 export PATH="$PATH:/usr/local/flutter/bin"
 export PATH="/usr/local/sbin:$PATH"
 export PATH="/usr/local/bin:$PATH"
+export PATH="$HOME/.rbenv/bin:$PATH"
+
+export BASH_SILENCE_DEPRECATION_WARNING=1
+
+export EDITOR="vim"
+
+function c () {
+  builtin cd "$@"
+
+  if [ -f "$(builtin pwd)/bash_env" ]; then
+    . "$(builtin pwd)/bash_env"
+    echo "Loaded bash_env from $(builtin pwd)/bash_env"
+  fi
+}
+
+. ~/.bash_profile_custom
