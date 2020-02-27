@@ -26,10 +26,11 @@ ln -s /Applications/Docker.app/Contents/Resources/etc/docker.bash-completion /us
 ln -s /Applications/Docker.app/Contents/Resources/etc/docker-machine.bash-completion /usr/local/etc/bash_completion.d/docker-machine
 ln -s /Applications/Docker.app/Contents/Resources/etc/docker-compose.bash-completion /usr/local/etc/bash_completion.d/docker-compose
 
-echo 'symlinking vimrc, tmux.conf and bash_profile'
+echo 'symlinking vimrc, tmux.conf, bash_profile and zshrc'
 ln -sf "$(pwd)/src/vimrc" ~/.vimrc
 ln -sf "$(pwd)/src/tmux.conf" ~/.tmux.conf
 ln -sf "$(pwd)/src/bash_profile" ~/.bash_profile
+ln -sf "$(pwd)/src/zshrc" ~/.zshrc
 
 [[ $(ls ~/.vim | grep backup 2> /dev/null) == "" ]] && echo 'making ~/.vim/backup and ~/.vim/swap dirs' && \
   mkdir ~/.vim/backup ~/.vim/swap 2> /dev/null
