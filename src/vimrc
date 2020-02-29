@@ -20,7 +20,7 @@ Plug 'thoughtbot/vim-rspec'
 Plug 'isRuslan/vim-es6'
 Plug 'mattn/emmet-vim'
 Plug 'lambdatoast/elm.vim'
-" Plug 'w0rp/ale'
+Plug 'w0rp/ale'
 Plug 'tmhedberg/SimpylFold'
 Plug 'walm/jshint.vim'
 Plug 'Shutnik/jshint2.vim'
@@ -58,6 +58,8 @@ Plug 'majutsushi/tagbar'
 Plug 'dart-lang/dart-vim-plugin'
 Plug 'zhamlin/tiler.vim'
 Plug 'neoclide/coc.nvim', {'tag': '*', 'do': { -> coc#util#install() }}
+Plug 'yuezk/vim-js'
+Plug 'MaxMEllon/vim-jsx-pretty'
 " Plug 'ruby-formatter/rufo-vim'
 " Plug 'flowtype/vim-flow', { 'autoload': { 'filetypes': 'javascript' } }
 
@@ -283,12 +285,38 @@ let g:tiler#popup#windows = {
 " Gohtml
 autocmd BufEnter *.gohtml set filetype=html
 
-" Typescript
-autocmd BufEnter *.ts set filetype=typescript
-autocmd BufEnter *.tsx set filetype=typescript
+" Javascript
+autocmd BufEnter *.jsx set filetype=javascript
 
+" Typescript
+" autocmd BufEnter *.ts set filetype=typescript
+" autocmd BufEnter *.tsx set filetype=typescript
 
 nnoremap <Leader>d :TSDoc<cr>
 
 " Enable rufo (RUby FOrmat)
-let g:rufo_auto_formatting = 1
+" let g:rufo_auto_formatting = 1
+
+" Linters
+let g:ale_linters = {
+\   'javascript': ['eslint'],
+\   'typescript': ['tsserver', 'tslint'],
+\   'vue': ['eslint']
+\}
+
+let g:ale_fixers = {
+\    'javascript': ['eslint'],
+\    'typescript': ['prettier', 'tslint'],
+\    'vue': ['eslint'],
+\    'scss': ['prettier'],
+\    'html': ['prettier']
+\}
+let g:ale_fix_on_save = 1
+
+" FORMATTERS
+au FileType javascript setlocal formatprg=prettier
+au FileType javascript.jsx setlocal formatprg=prettier
+au FileType typescript setlocal formatprg=prettier\ --parser\ typescript
+au FileType html setlocal formatprg=js-beautify\ --type\ html
+au FileType scss setlocal formatprg=prettier\ --parser\ css
+au FileType css setlocal formatprg=prettier\ --parser\ css
