@@ -65,6 +65,12 @@ alias glo="git log --oneline"
 alias gca="git commit --amend"
 alias gcm="git commit -m"
 
+# aliases:mongo
+alias mongo="docker container exec -it mongo mongo"
+
+# aliases:go
+alias go="go1.14.1"
+
 # env
 export PATH=$HOME/.cargo/bin:$PATH
 export PATH=$PATH:/usr/local/flutter/bin
