@@ -45,6 +45,7 @@ Plug 'ianks/vim-tsx'
 Plug 'leafgarland/typescript-vim', { 'autoload': { 'filetypes': 'typescript' } }
 Plug 'HerringtonDarkholme/yats.vim'
 Plug 'mhartington/nvim-typescript', { 'do': ':!install.sh \| UpdateRemotePlugin', 'autoload': { 'filetypes': 'typescript' } }
+Plug 'ianks/vim-tsx'
 Plug 'chrisbra/Colorizer'
 Plug 'pangloss/vim-javascript'
 Plug 'jparise/vim-graphql'
@@ -291,6 +292,7 @@ autocmd BufEnter *.jsx set filetype=javascript
 " Typescript
 " autocmd BufEnter *.ts set filetype=typescript
 " autocmd BufEnter *.tsx set filetype=typescript
+autocmd FileType typescript setlocal formatprg=prettier\ --parser\ typescript
 
 nnoremap <Leader>d :TSDoc<cr>
 
