@@ -51,6 +51,7 @@ zstyle ':vcs_info:*' enable git
 # aliases
 alias grep="grep --color=auto"
 alias ls="ls -G"
+alias mux="tmuxinator"
 
 # aliases:git
 alias gs="git status"
@@ -68,15 +69,14 @@ alias gcm="git commit -m"
 # aliases:mongo
 alias mongo="docker container exec -it mongo mongo"
 
-# aliases:go
-alias go="go1.14.1"
-
 # env
+export PATH=$HOME/Library/Java/JavaVirtualMachines:$PATH
 export PATH=$HOME/.cargo/bin:$PATH
 export PATH=$PATH:/usr/local/flutter/bin
 export PATH=/usr/local/sbin:$PATH
 export PATH=/usr/local/bin:$PATH
 export PATH=$HOME/.rbenv/bin:$PATH
+export PATH=$HOME/Library/Android/sdk/platform-tools:$PATH
 
 export EDITOR=vim
 
@@ -109,5 +109,21 @@ zstyle ':completion:*:*:git:*' script ~/.zsh/git-completion.bash
 fpath=(~/.zsh $fpath)
 autoload -Uz compinit && compinit
 
+# kube
+export KUBE_DIR="${HOME}/.kube"
+export KUBE_CONFIG="${KUBE_DIR}/config"
+export KUBE_CA_DIR="${KUBE_DIR}/CAs"
+export KUBE_TMP="${KUBE_DIR}/tmp"
+export KUBE_BIN="${KUBE_DIR}/bin"
+
+# gen
+export GEN_TEMPLATES_ROOT="${HOME}/gen/templates"
+
+# pyenv
+export PATH=$(pyenv root)/shims:$PATH
+
 # custom local things
 . ~/.zsh_local
+
+# Added by Amplify CLI binary installer
+export PATH="$HOME/.amplify/bin:$PATH"
