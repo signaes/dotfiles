@@ -19,55 +19,38 @@ Plug 'tpope/vim-bundler'
 Plug 'thoughtbot/vim-rspec'
 Plug 'isRuslan/vim-es6'
 Plug 'mattn/emmet-vim'
-Plug 'lambdatoast/elm.vim'
-Plug 'w0rp/ale'
 Plug 'tmhedberg/SimpylFold'
-Plug 'walm/jshint.vim'
-Plug 'Shutnik/jshint2.vim'
-Plug 'digitaltoad/vim-pug'
-Plug 'wavded/vim-stylus'
-Plug 'rhysd/vim-crystal'
-Plug 'kballard/vim-swift'
 Plug 'ngmy/vim-rubocop'
 Plug 'stefanoverna/vim-i18n'
-Plug 'kchmck/vim-coffee-script'
 Plug 'posva/vim-vue'
-Plug 'fatih/vim-go'
-Plug 'farazdagi/vim-go-ide'
-" Plug 'myitcv/govim'
+Plug 'govim/govim', { 'for': 'go' }
 Plug 'brookhong/ag.vim'
 Plug 'luochen1990/rainbow'
 Plug 'editorconfig/editorconfig-vim'
 Plug 'dyng/ctrlsf.vim'
 Plug 'terryma/vim-multiple-cursors'
 Plug 'styled-components/vim-styled-components', { 'branch': 'main' }
-Plug 'ianks/vim-tsx'
 Plug 'leafgarland/typescript-vim', { 'autoload': { 'filetypes': 'typescript' } }
 Plug 'HerringtonDarkholme/yats.vim'
 Plug 'mhartington/nvim-typescript', { 'do': ':!install.sh \| UpdateRemotePlugin', 'autoload': { 'filetypes': 'typescript' } }
-Plug 'ianks/vim-tsx'
+Plug 'ianks/vim-tsx', { 'autoload': { 'filetypes': 'typescript' } }
 Plug 'chrisbra/Colorizer'
-Plug 'pangloss/vim-javascript'
-Plug 'jparise/vim-graphql'
 Plug 'rust-lang/rust.vim'
-" Plug 'Shougo/deoplete.nvim'
-Plug 'roxma/nvim-yarp'
-Plug 'roxma/vim-hug-neovim-rpc'
-Plug 'Shougo/denite.nvim'
 Plug 'SirVer/ultisnips'
-Plug 'majutsushi/tagbar'
-Plug 'dart-lang/dart-vim-plugin'
-Plug 'zhamlin/tiler.vim'
-Plug 'neoclide/coc.nvim', {'tag': '*', 'do': { -> coc#util#install() }}
+Plug 'neoclide/coc.nvim', {'branch': 'release'}
+Plug 'iamcco/coc-tailwindcss',  {'do': 'yarn install --frozen-lockfile && yarn run build'}
 Plug 'yuezk/vim-js'
 Plug 'MaxMEllon/vim-jsx-pretty'
-" Plug 'ruby-formatter/rufo-vim'
-" Plug 'flowtype/vim-flow', { 'autoload': { 'filetypes': 'javascript' } }
-
-" neosnippet
-imap <C-k> <Plug>(neosnippet_expand_or_jump)
-smap <C-k> <Plug>(neosnippet_expand_or_jump)
-xmap <C-k> <Plug>(neosnippet_expand_target)
+Plug 'airblade/vim-gitgutter'
+Plug 'yggdroot/indentline'
+Plug 'APZelos/blamer.nvim'
+Plug 'rhysd/git-messenger.vim'
+Plug 'tiagofumo/vim-nerdtree-syntax-highlight'
+Plug 'udalov/kotlin-vim'
+Plug 'chr4/nginx.vim'
+Plug 'prettier/vim-prettier', {
+  \ 'do': 'yarn install --frozen-lockfile --production',
+  \ 'for': ['javascript', 'typescript', 'css', 'less', 'scss', 'json', 'graphql', 'markdown', 'vue', 'svelte', 'yaml', 'html'] }
 
 " a Vim extension that emulates iA Writer environment when editing Markdown, reStructuredText or text files
 Plug 'amix/vim-zenroom2'
@@ -162,6 +145,8 @@ autocmd! User GoyoLeave Limelight!
 
 " NERDTree
 nnoremap \ :NERDTreeToggle<cr>
+
+let g:NERDTreeWinPos = 'right'
 
 " Move lines
 nnoremap <Leader>k :m-2<cr>
@@ -266,13 +251,6 @@ let g:multi_cursor_quit_key            = '<Esc>'
 " Colorizer
 nnoremap <Leader>c :ColorToggle<cr>
 
-" Tiler
-nnoremap <Leader>. :TilerFocus<CR>
-nnoremap <Leader>x :TilerClose<CR>
-nnoremap <Leader>n :TilerNew<CR>
-nnoremap <Leader>r :TilerReorder<CR>
-nnoremap <Leader>o :TilerOpen
-
 let g:tiler#master#size = 50
 let g:tiler#master#count = 1
 let g:tiler#layout = 'left'
@@ -289,9 +267,12 @@ autocmd BufEnter *.gohtml set filetype=html
 " Javascript
 autocmd BufEnter *.jsx set filetype=javascript
 
+" Handlebars
+autocmd BufEnter *.hbs set filetype=hbs
+
 " Typescript
-" autocmd BufEnter *.ts set filetype=typescript
-" autocmd BufEnter *.tsx set filetype=typescript
+autocmd BufEnter *.ts set filetype=typescript
+autocmd BufEnter *.tsx set filetype=typescript
 autocmd FileType typescript setlocal formatprg=prettier\ --parser\ typescript
 
 nnoremap <Leader>d :TSDoc<cr>
@@ -299,26 +280,28 @@ nnoremap <Leader>d :TSDoc<cr>
 " Enable rufo (RUby FOrmat)
 " let g:rufo_auto_formatting = 1
 
-" Linters
-let g:ale_linters = {
-\   'javascript': ['eslint'],
-\   'typescript': ['tsserver', 'tslint'],
-\   'vue': ['eslint']
-\}
-
-let g:ale_fixers = {
-\    'javascript': ['eslint'],
-\    'typescript': ['prettier', 'tslint'],
-\    'vue': ['eslint'],
-\    'scss': ['prettier'],
-\    'html': ['prettier']
-\}
-let g:ale_fix_on_save = 1
-
 " FORMATTERS
 au FileType javascript setlocal formatprg=prettier
 au FileType javascript.jsx setlocal formatprg=prettier
-au FileType typescript setlocal formatprg=prettier\ --parser\ typescript
+au FileType typescript setlocal formatprg=prettier
+au FileType typescript.tsx setlocal formatprg=prettier
 au FileType html setlocal formatprg=js-beautify\ --type\ html
 au FileType scss setlocal formatprg=prettier\ --parser\ css
 au FileType css setlocal formatprg=prettier\ --parser\ css
+
+" Git blamer
+let g:blamer_enabled = 1
+
+" Git messenger
+nnoremap <Leader>m :GitMessenger<cr>
+
+" coc config
+let g:coc_global_extensions = [
+      \ 'coc-snippets',
+      \ 'coc-pairs',
+      \ ]
+
+" vim-prettier
+let g:prettier#autoformat = 1
+let g:prettier#autoformat_config_present = 0  " autoformat only when there is a config file
+let g:prettier#autoformat_require_pragma = 0
