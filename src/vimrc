@@ -13,15 +13,10 @@ Plug 'tpope/vim-surround'
 Plug 'tpope/vim-commentary'
 Plug 'tpope/vim-sleuth'
 Plug 'vim-ruby/vim-ruby'
-Plug 'tpope/vim-rails'
 Plug 'tpope/vim-fugitive'
-Plug 'tpope/vim-bundler'
-Plug 'thoughtbot/vim-rspec'
 Plug 'isRuslan/vim-es6'
 Plug 'mattn/emmet-vim'
 Plug 'tmhedberg/SimpylFold'
-Plug 'ngmy/vim-rubocop'
-Plug 'stefanoverna/vim-i18n'
 Plug 'posva/vim-vue'
 Plug 'govim/govim', { 'for': 'go' }
 Plug 'brookhong/ag.vim'
@@ -36,9 +31,7 @@ Plug 'mhartington/nvim-typescript', { 'do': ':!install.sh \| UpdateRemotePlugin'
 Plug 'ianks/vim-tsx', { 'autoload': { 'filetypes': 'typescript' } }
 Plug 'chrisbra/Colorizer'
 Plug 'rust-lang/rust.vim'
-Plug 'SirVer/ultisnips'
-Plug 'neoclide/coc.nvim', {'branch': 'release'}
-Plug 'iamcco/coc-tailwindcss',  {'do': 'yarn install --frozen-lockfile && yarn run build'}
+" Plug 'neoclide/coc.nvim', {'branch': 'release'}
 Plug 'yuezk/vim-js'
 Plug 'MaxMEllon/vim-jsx-pretty'
 Plug 'airblade/vim-gitgutter'
@@ -46,14 +39,9 @@ Plug 'yggdroot/indentline'
 Plug 'APZelos/blamer.nvim'
 Plug 'rhysd/git-messenger.vim'
 Plug 'tiagofumo/vim-nerdtree-syntax-highlight'
-Plug 'udalov/kotlin-vim'
-Plug 'chr4/nginx.vim'
 Plug 'prettier/vim-prettier', {
   \ 'do': 'yarn install --frozen-lockfile --production',
   \ 'for': ['javascript', 'typescript', 'css', 'less', 'scss', 'json', 'graphql', 'markdown', 'vue', 'svelte', 'yaml', 'html'] }
-
-" a Vim extension that emulates iA Writer environment when editing Markdown, reStructuredText or text files
-Plug 'amix/vim-zenroom2'
 
 Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }
 
@@ -208,13 +196,6 @@ xmap ga <Plug>(EasyAlign)
 " Start interactive EasyAlign for a motion/text object (e.g. gaip)
 nmap ga <Plug>(EasyAlign)
 
-" stylus syntax
-autocmd BufNewFile,BufRead *.styl set filetype=stylus
-
-" vim-i18n
-vmap <Leader>T :call I18nTranslateString()<CR>
-vmap <Leader>DT :call I18nDisplayTranslation()<CR>
-
 " line length
 set textwidth=80
 set colorcolumn=+1
@@ -267,18 +248,12 @@ autocmd BufEnter *.gohtml set filetype=html
 " Javascript
 autocmd BufEnter *.jsx set filetype=javascript
 
-" Handlebars
-autocmd BufEnter *.hbs set filetype=hbs
-
 " Typescript
 autocmd BufEnter *.ts set filetype=typescript
 autocmd BufEnter *.tsx set filetype=typescript
 autocmd FileType typescript setlocal formatprg=prettier\ --parser\ typescript
 
 nnoremap <Leader>d :TSDoc<cr>
-
-" Enable rufo (RUby FOrmat)
-" let g:rufo_auto_formatting = 1
 
 " FORMATTERS
 au FileType javascript setlocal formatprg=prettier

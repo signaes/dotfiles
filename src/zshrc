@@ -122,8 +122,12 @@ export GEN_TEMPLATES_ROOT="${HOME}/gen/templates"
 # pyenv
 export PATH=$(pyenv root)/shims:$PATH
 
-# custom local things
-. ~/.zsh_local
+# if type brew &>/dev/null; then
+#   FPATH=$(brew --prefix)/share/zsh-completions:$FPATH
 
-# Added by Amplify CLI binary installer
-export PATH="$HOME/.amplify/bin:$PATH"
+#   autoload -Uz compinit
+#   compinit
+# fi
+
+# custom local things
+# . ~/.zsh_local
