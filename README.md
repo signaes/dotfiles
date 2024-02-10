@@ -7,6 +7,7 @@ Will install:
 - ag
 - ripgrep
 - rbenv
+- pyenv
 
 Will download:
 - .git-completion.bash (if not already there)
