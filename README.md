@@ -3,10 +3,10 @@
 ```
 
 Will install:
-- homebrew (if not already installed)
-- plug.vim (if not already installed)
-- fzf (if not already installed)
-- ag (if not already installed)
+- fzf
+- ag
+- ripgrep
+- rbenv
 
 Will download:
 - .git-completion.bash (if not already there)
