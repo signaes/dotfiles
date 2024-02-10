@@ -1,16 +1,14 @@
 #!/bin/sh
-echo 'remember to install homebrew'
-echo 'remember to install vim-plug'
-echo 'remember to "brew install fzf"'
-echo 'remember to "brew install tmux"'
-echo 'remember to "brew install tmuxinator"'
-echo 'remember to "brew install the_silver_searcher"'
-echo 'remember to "brew install ripgrep"'
-echo 'remember to "brew install rbenv && rbenv init"'
-echo 'remember to "curl -o ~/.git-completion.zsh https://raw.githubusercontent.com/git/git/master/contrib/completion/git-completion.zsh"'
-echo 'remember to "curl -o ~/.git-completion.bash https://raw.githubusercontent.com/git/git/master/contrib/completion/git-completion.bash"'
-echo 'remember to "brew install bash-completion"'
-echo 'remember to "brew install zsh-completion"'
+brew install fzf
+brew install tmux
+brew install tmuxinator
+brew install the_silver_searcher
+brew install ripgrep
+brew install rbenv && rbenv init
+curl -o ~/.git-completion.zsh https://raw.githubusercontent.com/git/git/master/contrib/completion/git-completion.zsh
+curl -o ~/.git-completion.bash https://raw.githubusercontent.com/git/git/master/contrib/completion/git-completion.bash
+brew install bash-completion
+brew install zsh-completion
 
 echo 'symlinking vimrc, tmux.conf, bash_profile and zshrc'
 ln -sf "$(pwd)/src/vimrc" ~/.vimrc
