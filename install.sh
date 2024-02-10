@@ -1,10 +1,13 @@
 #!/bin/sh
+brew update
+brew upgrade
 brew install fzf
 brew install tmux
 brew install tmuxinator
 brew install the_silver_searcher
 brew install ripgrep
 brew install rbenv && rbenv init
+brew install pyenv
 curl -o ~/.git-completion.zsh https://raw.githubusercontent.com/git/git/master/contrib/completion/git-completion.zsh
 curl -o ~/.git-completion.bash https://raw.githubusercontent.com/git/git/master/contrib/completion/git-completion.bash
 brew install bash-completion
